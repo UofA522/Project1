@@ -5,4 +5,6 @@ edition = "2021"
 
 [dependencies]
 clap = { version = "4.5.20", features = ["derive"] }
-yahoo-finance = "0.3.0"
+yahoo_finance_api = "2.3.0"
+tokio = { version = "1.0.0", features = ["rt", "rt-multi-thread", "macros"] }
+lazy_static = "1.5.0"

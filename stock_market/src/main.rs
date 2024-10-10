@@ -1,7 +1,9 @@
 
 use clap::Parser;
+use yahoo_finance_api as yahoo;
 
-
+use lazy_static::lazy_static;
+use std::sync::Mutex;
 #[derive(Parser, Debug)]
 #[command(version="0.1.0", about="CLI Program to fetch stock using Yahoo finance", long_about = "CLI Program to fetch stock using Yahoo finance. The CLI is build using the clap crate in rust")]
 struct Stock {
@@ -9,12 +11,13 @@ struct Stock {
     #[arg(short, long)]
     name : String
 }
-fn main() {
+#[tokio::main]
+async fn main() {
     let stock_args = Stock::parse();
-    fetch_stock(stock_args.name)
+    let provider = yahoo::YahooConnector::new().expect("Failed to Create Yahoo connector");
 }
 
-fn fetch_stock(stock_name: String) {
+async fn fetch_stock(stock_name: String) {
 
 }
 
