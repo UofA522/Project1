@@ -1,4 +1,3 @@
-use std::error::Error;
 use clap::Parser;
 use lazy_static::lazy_static;
 use log::LevelFilter;
@@ -6,6 +5,7 @@ use log::{debug, error, info};
 use log4rs::append::file::FileAppender;
 use log4rs::config::{Appender, Config, Root};
 use log4rs::encode::pattern::PatternEncoder;
+use std::error::Error;
 use std::sync::Mutex;
 use yahoo_finance_api::{Decimal, Quote, YResponse, YahooConnector, YahooError};
 
@@ -29,7 +29,7 @@ struct Stock {
     interval: String,
     /// Range of date you are interested in getting the data for
     #[arg(short, long, default_value = "6mo")]
-    range: String
+    range: String,
 }
 fn init_log()
 {
@@ -52,15 +52,15 @@ async fn main() {
     debug!("Ticker Name set :{}",stock_args.name);
     debug!("Interval Set:{}",stock_args.interval);
     debug!("About to fetch Stock from Yahoo");
-    let response = fetch_stock(&stock_args.name, &stock_args.interval,&stock_args.range).await;
+    let response = fetch_stock(&stock_args.name, &stock_args.interval, &stock_args.range).await;
     match response {
         Ok(data) => {
             let quotes = data.quotes();
             match quotes {
                 Ok(stock_quotes) => {
-                    let mut stock_prices:Vec<(u64,f64,f64,f64)> = Vec::new();
+                    let mut stock_prices: Vec<(u64, f64, f64, f64)> = Vec::new();
                     for quote in stock_quotes {
-                        let s = (quote.timestamp,quote.close as f64,quote.low as f64,quote.high as f64);
+                        let s = (quote.timestamp, quote.close as f64, quote.low as f64, quote.high as f64);
                         stock_prices.push(s);
                         println!("{:?}", s)
                     }
@@ -78,8 +78,8 @@ async fn main() {
     }
 }
 
-async fn fetch_stock(stock_name: &str, interval: &str,range:&str) -> Result<YResponse, YahooError> {
-    CONNECTOR.lock().unwrap().get_quote_range(stock_name,interval,range).await
+async fn fetch_stock(stock_name: &str, interval: &str, range: &str) -> Result<YResponse, YahooError> {
+    CONNECTOR.lock().unwrap().get_quote_range(stock_name, interval, range).await
 }
 
 
