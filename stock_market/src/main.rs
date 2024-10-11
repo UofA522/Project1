@@ -58,9 +58,15 @@ async fn main() {
             let quotes = data.quotes();
             match quotes {
                 Ok(stock_quotes) => {
-                    let mut stock_prices: Vec<(u64, f64, f64, f64)> = Vec::new();
+                    let mut stock_prices: Vec<(u64, f64, f64, f64, bool)> = Vec::new();
                     for quote in stock_quotes {
-                        let s = (quote.timestamp, quote.close as f64, quote.low as f64, quote.high as f64);
+                        let mut volatile:bool = false;
+                        let intra_day_high_low:f64 = (quote.high - quote.low) as f64;
+                        let threshold = 0.02 * (quote.close as f64);
+                        if intra_day_high_low > threshold {
+                            volatile = true;
+                        }
+                        let s = (quote.timestamp, quote.close as f64, quote.low as f64, quote.high as f64,volatile);
                         stock_prices.push(s);
                         println!("{:?}", s)
                     }
