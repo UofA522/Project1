@@ -1,0 +1,7 @@
+DEBUG - starting new connection: https://query1.finance.yahoo.com/
+DEBUG - starting new connection: https://query1.finance.yahoo.com/
+DEBUG - starting new connection: https://query1.finance.yahoo.com/
+DEBUG - starting new connection: https://query1.finance.yahoo.com/
+DEBUG - starting new connection: https://query1.finance.yahoo.com/
+ERROR - Yahoo finance errored out with the following error:fetching the data from yahoo! finance failed
+DEBUG - starting new connection: https://query1.finance.yahoo.com/
