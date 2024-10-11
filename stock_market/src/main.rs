@@ -69,6 +69,7 @@ async fn main() {
                         let s = (quote.timestamp, quote.close as f64, quote.low as f64, quote.high as f64,volatile);
                         stock_prices.push(s);
                         println!("{:?}", s)
+                        //Plot graph here
                     }
                 }
                 Err(e) => {
