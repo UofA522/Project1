@@ -58,7 +58,7 @@ async fn main() {
                     for quote in stock_quotes {
                         let s = (quote.timestamp,quote.close,quote.low,quote.high);
                         closing_prices.push(s);
-                        println!g("{:?}", s)
+                        println!("{:?}", s)
                     }
                 }
                 Err(e) => {
