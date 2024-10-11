@@ -8,3 +8,5 @@ clap = { version = "4.5.20", features = ["derive"] }
 yahoo_finance_api = "2.3.0"
 tokio = { version = "1.0.0", features = ["rt", "rt-multi-thread", "macros"] }
 lazy_static = "1.5.0"
+log = { version = "0.4.22", features = ["max_level_debug","release_max_level_debug"] }
+log4rs = "1.3.0"
