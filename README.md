@@ -1,5 +1,10 @@
 # Rust Project 1 for 522 - Stock Market Monitor
 
+## Group-4
+- Alton Lavin D'souza (1814026)
+- Kalyana Abenanth Gurunathan (1836448)
+- Prabhroop Singh ()
+
 ## Overview 
 
 The goal of the project is as follows:
