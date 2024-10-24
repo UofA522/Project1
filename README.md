@@ -56,6 +56,6 @@ Moving Average Convergence Divergence (MACD):
 5. Usage Instructions
 
 References:
-https://docs.rs/ta/0.5.0/ta/
-https://crates.io/crates/chrono
+[ta](https://docs.rs/ta/0.5.0/ta/)
+[chrono](https://crates.io/crates/chrono)
 
