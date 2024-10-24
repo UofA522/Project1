@@ -15,13 +15,13 @@ The goal of the project is as follows:
   
   2. `yahoo_finance_api`: ‘yahoo_finance_api’ has been used in this project to fetch the stock quotes of the past six months using the yahoo! finance API. [Link]
   
-  3. `tokio`:
+  3. `tokio`: A runtime for writing reliable asynchronous applications in Rust.
   
-  4. `lazy_static`:
+  4. `lazy_static`: A crate for declaring lazily evaluated static variables
   
-  5. `log`:
+  5. `log`: A crate used for providing a single API that abstracts various logging implementations
   
-  6. `log4rs`:
+  6. `log4rs`: Logging implementation used for our application, modelled after popular Java logging libraries like `logback` and `log4j`
   
   7. `plotters`: ‘plotters’ crate is used to plot various types of graphs like line chart, histogram, candlesticks plot etc. [Link]
   
