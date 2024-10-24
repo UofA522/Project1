@@ -82,6 +82,28 @@ After you extract the file your file directory should something as above. Follow
 
 
 ## Usage Instructions
+### Help
+```
+ ./stock_market.exe --help
+```
+or 
+
+```
+ ./stock_market.exe -h
+```
+Output:
+
+![image](https://github.com/user-attachments/assets/91fc9570-894a-4523-a6a7-4823225e4070)
+
+### Version
+```
+./stock_market.exe --version
+```
+or 
+```
+./stock_market.exe -v
+```
+###
 
 ### Table for Supported Range and interval 
 ![image](https://github.com/user-attachments/assets/b6c952ed-dd8a-4f6f-a4fd-8c102faf6d5a)
