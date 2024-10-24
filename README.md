@@ -69,7 +69,9 @@ Moving Average Convergence Divergence (MACD):
 ## Charting Setup
 
 For plotting all the charts we used plotters and labelled the x and y axis where and when needed.
-The charts looks like 
+
+We have used Line and Histogram Charts primarily.
+The charts looks like as follows:
 
 ![stock_chart_TSLA](https://github.com/user-attachments/assets/afc0b38d-afe9-4aa6-9d2d-ea325377133a)
 
@@ -81,6 +83,18 @@ The charts looks like
 
 
 ![rsiTSLA](https://github.com/user-attachments/assets/4fc46294-a1e7-4c5f-882f-20b5be03abd2)
+
+![sma_BNY](https://github.com/user-attachments/assets/011434a6-5afb-4fdf-bcaa-3c04eb2e4e90)
+
+![sma_TSLA](https://github.com/user-attachments/assets/1b741162-cb45-496c-8811-9e3704a6ad51)
+
+![stock_chart_BNY](https://github.com/user-attachments/assets/dde48da4-1efd-435f-aa04-91144b5bb971)
+
+![stock_chart_TSLA](https://github.com/user-attachments/assets/4c39ed70-6203-4bbd-b21f-4615608a42c4)
+
+
+
+
 
 
 
