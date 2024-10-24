@@ -49,8 +49,7 @@ Fast/Slow Simple Moving Average (SMA):
 
 Moving Average Convergence Divergence (MACD):
 
-
-3. Charting Setup
+## Charting Setup
 
 4. Project Setup
 
