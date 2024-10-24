@@ -68,7 +68,11 @@ To setup the project lets look at the project setup that you might have:
 
 ![image](https://github.com/user-attachments/assets/e4e89dfa-0567-4f46-9064-735ff605ba18)
 
+After you extract the file your file directory should something as above. Follow the steps.
 
+1. Install Rust from [here](https://www.rust-lang.org/tools/install)
+2. Run  `cd stock_market`
+3. 
 
 ## Usage Instructions
 
