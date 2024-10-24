@@ -233,7 +233,7 @@ async fn main() {
             }
         }
         Err(e) => {
-            error!("Yahoo finance errored out with the following error:{}",e);
+            error!("Yahoo finance errored out with the following error, ensure you have specified the right ticker and have used supported ranges and intervals also ensure you are connected to the internet:{}",e);
             println!("Error occured check log file for more details");
         }
     }
