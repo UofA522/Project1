@@ -83,6 +83,10 @@ After you extract the file your file directory should something as above. Follow
 
 ## Usage Instructions
 
+### Table for Supported Range and interval 
+![image](https://github.com/user-attachments/assets/b6c952ed-dd8a-4f6f-a4fd-8c102faf6d5a)
+
+
 ## References:
 1. [ta](https://docs.rs/ta/0.5.0/ta/)
 2. [chrono](https://crates.io/crates/chrono)
