@@ -63,6 +63,9 @@ Moving Average Convergence Divergence (MACD):
 
 ## Charting Setup
 
+For plotting all the charts we used plotters and labelled the x and y axis where and when needed.
+The charts looks like 
+
 ## Project Setup
 To setup the project lets look at the project setup that you might have:
 
