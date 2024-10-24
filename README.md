@@ -1,7 +1,7 @@
 # Project1
 Rust Project 1 for 522 - Stock Market Monitor
 
-1. The crates used in this project and their uses are described as follows:
+## 1. The crates used in this project and their uses are described as follows:
 
   clap: ‘clap’ crate is used for building flexible command line interface applications. [Link]
   
@@ -22,7 +22,7 @@ Rust Project 1 for 522 - Stock Market Monitor
   ta: ‘ta’ crate is used for technical analysis tasks. We have used this crate to calculate a variety of financial analysis indicators like RSI (Relative Strength   Index), MACD (Moving Average Convergence Divergence) etc. [Link]
 
 
-2. Financial Analysis Indicators/Algorithms used:
+## 2. Financial Analysis Indicators/Algorithms used:
 
 Volatile Days: On the stock chart volatile days are plotted in order to indicate the days where stock price varied by more than 2% of the total price.
 
@@ -49,11 +49,11 @@ Fast/Slow Simple Moving Average (SMA):
 
 Moving Average Convergence Divergence (MACD):
 
-## Charting Setup
+## 3. Charting Setup
 
-4. Project Setup
+## 4. Project Setup
 
-5. Usage Instructions
+## 5. Usage Instructions
 
 References:
 [ta](https://docs.rs/ta/0.5.0/ta/)
