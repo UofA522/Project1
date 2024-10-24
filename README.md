@@ -64,6 +64,8 @@ Moving Average Convergence Divergence (MACD):
 ## Charting Setup
 
 ## Project Setup
+To setup the project lets look at the project setup that you might have:
+
 
 ## Usage Instructions
 
