@@ -71,8 +71,15 @@ To setup the project lets look at the project setup that you might have:
 After you extract the file your file directory should something as above. Follow the steps.
 
 1. Install Rust from [here](https://www.rust-lang.org/tools/install)
-2. Run  `cd stock_market`
-3. 
+2. Run  `cd ./stock_market`
+3. Run `cargo build --release`
+4. You should now see a `target` directory
+5. Run  `cd ./target/release`
+6. Then run `./stock_marker.exe --name AAPL`
+![image](https://github.com/user-attachments/assets/b8148f23-519c-4c1f-a3c9-bddbbb7075c8)
+
+`Note: All errors are logged to a log file under the 'log' directory`
+
 
 ## Usage Instructions
 
