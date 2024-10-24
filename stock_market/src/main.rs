@@ -168,6 +168,10 @@ async fn main() {
                     let (max_date,max_price, min_date, min_price) = fetch_min_max_closing_pricing_with_dates(&stock_prices);
                     println!("Max closing Price For {} : {} on {}",&stock_args.name,max_price,DateTime::from_timestamp(max_date as i64, 0).unwrap());
                     println!("Min closing Price For {} : {} on {}",&stock_args.name,min_price,DateTime::from_timestamp(min_date as i64,0).unwrap());
+
+                    let times: Vec<DateTime<Utc>> = stock_prices.iter()
+                        .map(|&(unix_timestamp, _, _, _, _)| DateTime::from_timestamp(unix_timestamp as i64, 0).unwrap())
+                        .collect();
                     match stock_picture_creator(&stock_prices, &stock_args.name) {
                         Err(e) => {
                             println!("Error Occured while creating the chart");
@@ -175,8 +179,9 @@ async fn main() {
                         }
                         _ => ()
                     }
+
                     //Bollinger Bands
-                    match bollinger_bands(closing_prices_vec.clone(), 20, 2.0,&stock_args.name) {
+                    match bollinger_bands(closing_prices_vec.clone(), 20, 2.0,&stock_args.name,times.clone()) {
                         Ok(_) => {debug!("Bollinger Bands Created")}
                         Err(e) => {println!("Error while creating bolLinger bands check log file for more details");
                             error!("Error while creating Bollinger Bands:{:?}",e)
@@ -184,7 +189,7 @@ async fn main() {
                     }
 
                     //RSI
-                    match rsi(closing_prices_vec.clone(), 14, &stock_args.name) {
+                    match rsi(closing_prices_vec.clone(), 14, &stock_args.name,times.clone()) {
                         Ok(_) => {debug!("RSI Chart Created Successfully")}
                         Err(e) => {
                             println!("Error While creating RSI chart check log file for more details");
@@ -203,7 +208,7 @@ async fn main() {
                     }
 
                     // Fast/Slow Exponential Moving Averages
-                    match exponential_moving_averages(closing_prices_vec.clone(), 20, 50,&stock_args.name) {
+                    match exponential_moving_averages(closing_prices_vec.clone(), 20, 50,&stock_args.name,times.clone()) {
                         Ok(_) => {
                             debug!("Graph for Exponential Moving Averages Created")
                         }
@@ -214,7 +219,7 @@ async fn main() {
                     };
 
                     //Fast/Slow Simple Moving Averages
-                    match simple_moving_averages(closing_prices_vec.clone(), 20, 50, &stock_args.name) {
+                    match simple_moving_averages(closing_prices_vec.clone(), 20, 50, &stock_args.name,times.clone()) {
                         Ok(_) => {debug!("Graph for simple moving averages created")}
                         Err(e) => {
                             println!("Error while creating simple moving averages graph check log file for more details");
@@ -257,7 +262,7 @@ async fn fetch_stock(stock_name: &str, interval: &str, range: &str) -> Result<YR
     CONNECTOR.lock().unwrap().get_quote_range(stock_name, interval, range).await
 }
 
-fn bollinger_bands(closing_prices: Vec<f64>, period: usize, multiplier: f64, ticker_name: &str) -> Result<(), Box<dyn std::error::Error>> {
+fn bollinger_bands(closing_prices: Vec<f64>, period: usize, multiplier: f64, ticker_name: &str, times: Vec<DateTime<Utc>>) -> Result<(), Box<dyn std::error::Error>> {
     let mut average = Vec::new();
     let mut upper_bands = Vec::new();
     let mut lower_bands = Vec::new();
@@ -282,30 +287,38 @@ fn bollinger_bands(closing_prices: Vec<f64>, period: usize, multiplier: f64, tic
 
     // Set the chart area, handling the range from min_value to max_value
     let mut chart = ChartBuilder::on(&root)
-        .caption("Bollinger Bands Graph For ".to_owned()+ticker_name, ("sans-serif", 50).into_font())
-        .margin(20)
-        .x_label_area_size(30)
-        .y_label_area_size(30)
-        .build_cartesian_2d(0..average.len(), min_value..max_value)?;
+        .caption("Bollinger Bands Graph For ".to_owned() + ticker_name, ("sans-serif", 30).into_font())
+        .margin(10)
+        .x_label_area_size(55)
+        .y_label_area_size(40)
+        .build_cartesian_2d(times[0]..times[times.len() - 1], min_value..max_value)?;
 
-    // Configure the mesh (grid) and labels
-    chart.configure_mesh().draw()?;
+    chart.configure_mesh()
+        .x_labels(5)
+        .y_labels(5)
+        .x_label_formatter(&|x| x.format("%Y-%m-%d").to_string())
+        .draw()?;
 
-    // Draw the line chart
-    chart.draw_series(LineSeries::new(average.iter().enumerate().map(|(i, &y)| (i, y)), &RED))?; // Use red
-    //chart.configure_series_labels().border_style(&BLACK).draw()?;
+    chart.draw_series(LineSeries::new(
+        times.iter().zip(average.iter()).map(|(&time, &avg)| (time, avg)),
+        &RED,
+    ))?;
 
-    chart.draw_series(LineSeries::new(upper_bands.iter().enumerate().map(|(i, &y)| (i, y)), &BLACK))?; // Use red
-    //chart.configure_series_labels().border_style(&BLACK).draw()?;
+    chart.draw_series(LineSeries::new(
+        times.iter().zip(upper_bands.iter()).map(|(&time, &upper)| (time, upper)),
+        &BLUE,
+    ))?;
 
-    chart.draw_series(LineSeries::new(lower_bands.iter().enumerate().map(|(i, &y)| (i, y)), &BLUE))?; // Use red
-    //chart.configure_series_labels().border_style(&BLACK).draw()?;
+    chart.draw_series(LineSeries::new(
+        times.iter().zip(lower_bands.iter()).map(|(&time, &lower)| (time, lower)),
+        &BLACK,
+    ))?;
 
     root.present()?;
     Ok(())
 }
 
-fn rsi(closing_prices: Vec<f64>, period: usize, ticker_name: &str) -> Result<(), Box<dyn std::error::Error>> {
+fn rsi(closing_prices: Vec<f64>, period: usize, ticker_name: &str, times: Vec<DateTime<Utc>>) -> Result<(), Box<dyn std::error::Error>> {
     let mut rsi = RelativeStrengthIndex::new(period).unwrap();
     let mut vector: Vec<f64> = Vec::new();
 
@@ -326,17 +339,22 @@ fn rsi(closing_prices: Vec<f64>, period: usize, ticker_name: &str) -> Result<(),
 
     // Set the chart area, handling the range from min_value to max_value
     let mut chart = ChartBuilder::on(&root)
-        .caption("RSI Chart for ".to_owned()+ ticker_name, ("sans-serif", 50).into_font())
-        .margin(20)
-        .x_label_area_size(30)
-        .y_label_area_size(30)
-        .build_cartesian_2d(0..vector.len(), min_value..max_value)?;
+        .caption("RSI Chart for ".to_owned() + ticker_name, ("sans-serif", 30).into_font())
+        .margin(10)
+        .x_label_area_size(55)
+        .y_label_area_size(40)
+        .build_cartesian_2d(times[0]..times[times.len() - 1], min_value..max_value)?;
 
-    // Configure the mesh (grid) and labels
-    chart.configure_mesh().draw()?;
+    chart.configure_mesh()
+        .x_labels(5)
+        .y_labels(5)
+        .x_label_formatter(&|x| x.format("%Y-%m-%d").to_string())
+        .draw()?;
 
-    // Draw the line chart
-    chart.draw_series(LineSeries::new(vector.iter().enumerate().map(|(i, &y)| (i, y)), &BLACK))?; // Use red
+    chart.draw_series(LineSeries::new(
+        times.iter().zip(vector.iter()).map(|(&time, &price)| (time, price)),
+        &RED,
+    ))?;
     //chart.configure_series_labels().border_style(&BLACK).draw()?;
 
     root.present()?;
@@ -408,7 +426,7 @@ fn macd(
 }
 
 
-fn exponential_moving_averages(closing_prices_vec: Vec<f64>, fast_period: usize, slow_period: usize, ticker_name:&str) -> Result<(), Box<dyn std::error::Error>> {
+fn exponential_moving_averages(closing_prices_vec: Vec<f64>, fast_period: usize, slow_period: usize, ticker_name:&str, times: Vec<DateTime<Utc>>) -> Result<(), Box<dyn std::error::Error>> {
     let mut fast_ema = ExponentialMovingAverage::new(fast_period).unwrap(); // Fast EMA
     let mut slow_ema = ExponentialMovingAverage::new(slow_period).unwrap(); // Slow EMA
 
@@ -433,24 +451,33 @@ fn exponential_moving_averages(closing_prices_vec: Vec<f64>, fast_period: usize,
 
     // Set the chart area, handling the range from min_value to max_value
     let mut chart = ChartBuilder::on(&root)
-        .caption("Exponential Moving Averages for ".to_owned() + ticker_name, ("sans-serif", 50).into_font())
-        .margin(20)
-        .x_label_area_size(30)
-        .y_label_area_size(30)
-        .build_cartesian_2d(0..fast_ema_values.len(), min_value..max_value)?;
+        .caption("Exponential Moving Averages for ".to_owned() + ticker_name, ("sans-serif", 30).into_font())
+        .margin(10)
+        .x_label_area_size(55)
+        .y_label_area_size(40)
+        .build_cartesian_2d(times[0]..times[times.len() - 1], min_value..max_value)?;
 
-    // Configure the mesh (grid) and labels
-    chart.configure_mesh().draw()?;
+    chart.configure_mesh()
+        .x_labels(5)
+        .y_labels(5)
+        .x_label_formatter(&|x| x.format("%Y-%m-%d").to_string())
+        .draw()?;
 
-    // Draw the line chart
-    chart.draw_series(LineSeries::new(fast_ema_values.iter().enumerate().map(|(i, &y)| (i, y)), &BLACK))?;
-    chart.draw_series(LineSeries::new(slow_ema_values.iter().enumerate().map(|(i, &y)| (i, y)), &RED))?;
+    chart.draw_series(LineSeries::new(
+        times.iter().zip(fast_ema_values.iter()).map(|(&time, &price)| (time, price)),
+        &RED,
+    ))?;
+
+    chart.draw_series(LineSeries::new(
+        times.iter().zip(slow_ema_values.iter()).map(|(&time, &price)| (time, price)),
+        &BLACK,
+    ))?;
 
     root.present()?;
     Ok(())
 }
 
-fn simple_moving_averages(closing_prices_vec: Vec<f64>, fast_period: usize, slow_period: usize, ticker_name:&str) -> Result<(), Box<dyn std::error::Error>> {
+fn simple_moving_averages(closing_prices_vec: Vec<f64>, fast_period: usize, slow_period: usize, ticker_name:&str, times: Vec<DateTime<Utc>>) -> Result<(), Box<dyn std::error::Error>> {
     let mut fast_sma = SimpleMovingAverage::new(fast_period).unwrap(); // Fast SMA
     let mut slow_sma = SimpleMovingAverage::new(slow_period).unwrap(); // Slow EMA
 
@@ -474,19 +501,29 @@ fn simple_moving_averages(closing_prices_vec: Vec<f64>, fast_period: usize, slow
     let max_value = fast_sma_values.iter().chain(slow_sma_values.iter()).fold(f64::NEG_INFINITY, |a, &b| a.max(b));
 
     // Set the chart area, handling the range from min_value to max_value
+    // Set the chart area, handling the range from min_value to max_value
     let mut chart = ChartBuilder::on(&root)
-        .caption("Simple Moving Averages Chart for ".to_owned()+ticker_name, ("sans-serif", 50).into_font())
-        .margin(20)
-        .x_label_area_size(30)
-        .y_label_area_size(30)
-        .build_cartesian_2d(0..slow_sma_values.len(), min_value..max_value)?;
+        .caption("Simple Moving Averages Chart for ".to_owned() + ticker_name, ("sans-serif", 30).into_font())
+        .margin(10)
+        .x_label_area_size(55)
+        .y_label_area_size(40)
+        .build_cartesian_2d(times[0]..times[times.len() - 1], min_value..max_value)?;
 
-    // Configure the mesh (grid) and labels
-    chart.configure_mesh().draw()?;
+    chart.configure_mesh()
+        .x_labels(5)
+        .y_labels(5)
+        .x_label_formatter(&|x| x.format("%Y-%m-%d").to_string())
+        .draw()?;
 
-    // Draw the line chart
-    chart.draw_series(LineSeries::new(fast_sma_values.iter().enumerate().map(|(i, &y)| (i, y)), &BLACK))?;
-    chart.draw_series(LineSeries::new(slow_sma_values.iter().enumerate().map(|(i, &y)| (i, y)), &RED))?;
+    chart.draw_series(LineSeries::new(
+        times.iter().zip(fast_sma_values.iter()).map(|(&time, &price)| (time, price)),
+        &RED,
+    ))?;
+
+    chart.draw_series(LineSeries::new(
+        times.iter().zip(slow_sma_values.iter()).map(|(&time, &price)| (time, price)),
+        &BLACK,
+    ))?;
 
     root.present()?;
     Ok(())
