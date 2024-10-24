@@ -11,9 +11,9 @@ The goal of the project is as follows:
 
 ## The crates used in this project and their uses are described as follows:
 
-  1. `clap`: ‘clap’ crate is used for building flexible command line interface applications. [Link]
+  1. `clap`: crate is used for building flexible command line interface applications. [Link]
   
-  2. `yahoo_finance_api`: ‘yahoo_finance_api’ has been used in this project to fetch the stock quotes of the past six months using the yahoo! finance API. [Link]
+  2. `yahoo_finance_api`:  has been used in this project to fetch the stock quotes of the past six months using the yahoo! finance API. [Link]
   
   3. `tokio`: A runtime for writing reliable asynchronous applications in Rust.
   
@@ -23,11 +23,11 @@ The goal of the project is as follows:
   
   6. `log4rs`: Logging implementation used for our application, modelled after popular Java logging libraries like `logback` and `log4j`
   
-  7. `plotters`: ‘plotters’ crate is used to plot various types of graphs like line chart, histogram, candlesticks plot etc. [Link]
+  7. `plotters`:  crate is used to plot various types of graphs like line chart, histogram, candlesticks plot etc. [Link]
   
   8. `chrono`: The ‘chrono’ crate is a library which contains a list of functions which can be used to perform various operations on dates and times in the Proleptic Gregorian calendar. [Link] 
   
-  9. `ta`: ‘ta’ crate is used for technical analysis tasks. We have used this crate to calculate a variety of financial analysis indicators like RSI (Relative Strength   Index), MACD (Moving Average Convergence Divergence) etc. [Link]
+  9. `ta`: crate is used for technical analysis tasks. We have used this crate to calculate a variety of financial analysis indicators like RSI (Relative Strength   Index), MACD (Moving Average Convergence Divergence) etc.
 
 
 ## Financial Analysis Indicators/Algorithms used:
@@ -65,6 +65,9 @@ Moving Average Convergence Divergence (MACD):
 
 ## Project Setup
 To setup the project lets look at the project setup that you might have:
+
+![image](https://github.com/user-attachments/assets/e4e89dfa-0567-4f46-9064-735ff605ba18)
+
 
 
 ## Usage Instructions
