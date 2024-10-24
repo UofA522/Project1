@@ -66,6 +66,22 @@ Moving Average Convergence Divergence (MACD):
 For plotting all the charts we used plotters and labelled the x and y axis where and when needed.
 The charts looks like 
 
+![stock_chart_TSLA](https://github.com/user-attachments/assets/afc0b38d-afe9-4aa6-9d2d-ea325377133a)
+
+![stock_chart_BNY](https://github.com/user-attachments/assets/2602b544-ffc0-4582-9fa9-a21f52faa18b)
+
+![sma_TSLA](https://github.com/user-attachments/assets/d8327974-b596-4c3e-a67e-792074a4ab68)
+
+![sma_BNY](https://github.com/user-attachments/assets/341217f6-5fcf-4b18-a603-b17d0b1178a2)
+
+
+![rsiTSLA](https://github.com/user-attachments/assets/4fc46294-a1e7-4c5f-882f-20b5be03abd2)
+
+
+
+Autoscaling is supported for height not width, width is fixed.
+
+
 ## Project Setup
 To setup the project lets look at the project setup that you might have:
 
