@@ -103,9 +103,23 @@ or
 ```
 ./stock_market.exe -v
 ```
-###
+### Basic Usage
+```
+./stock_market --name <STOCK_TICKER_NAME>
+```
+This shows the daily stock quotes for the last 6 months
+#### Example
+![image](https://github.com/user-attachments/assets/cf07acfc-1d69-406e-80b7-a7f331053888)
 
-### Table for Supported Range and interval 
+### Usages with different range and interval
+```
+./stock_market --name <STOCK_TICKER_NAME> --range <range> --interval <interval>
+```
+#### Example
+![image](https://github.com/user-attachments/assets/c09a6e1e-3c50-4647-947f-792d39fa48a0)
+
+The above example works only if you supported ranges and intervals as shown in the below table.
+##### Table for Supported Range and interval 
 ![image](https://github.com/user-attachments/assets/b6c952ed-dd8a-4f6f-a4fd-8c102faf6d5a)
 
 
