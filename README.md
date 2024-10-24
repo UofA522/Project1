@@ -126,4 +126,6 @@ The above example works only if you supported ranges and intervals as shown in t
 ## References:
 1. [ta](https://docs.rs/ta/0.5.0/ta/)
 2. [chrono](https://crates.io/crates/chrono)
+3. [yahoo_finance_api](https://crates.io/crates/yahoo_finance_api)
+
 
