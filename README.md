@@ -52,7 +52,7 @@ RSIt = EMAUt * 100 / (EMAUt + EMADt)
 ```
 
 
-### Symbol Definitions
+Symbol Definitions
 
 1. RSIt : value of RSI indicator in a moment of time t
 2. EMAUt : value of EMA of up periods in a moment of time t
@@ -60,11 +60,11 @@ RSIt = EMAUt * 100 / (EMAUt + EMADt)
 
 The RSI indicator is studied in order to identify the oversold or overbought conditions of a stock.
 
-Fast/Slow Exponential Moving Average (EMA):
+### 3. Fast/Slow Exponential Moving Average (EMA):
 
-Fast/Slow Simple Moving Average (SMA):
+###4. Fast/Slow Simple Moving Average (SMA):
 
-Moving Average Convergence Divergence (MACD):
+###5. Moving Average Convergence Divergence (MACD):
 
 ## Charting Setup
 
