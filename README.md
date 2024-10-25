@@ -37,10 +37,10 @@ The goal of the project is as follows:
 
 ## Financial Analysis Indicators/Algorithms used:
 
-###1. Volatile Days 
+### 1. Volatile Days 
 On the stock chart volatile days are plotted in order to indicate the days where stock price varied by more than 2% of the total price.
 
-###2. Bollinger Bands 
+### 2. Bollinger Bands 
 We have implemented the Bollinger Bands Indicators by using the ta crate. For Bollinger Bands, three lines are plotted (middle band, upper band, lower band). The middle band is usually calculated as a simple moving average over a particular period (a period of 20 has been used in our program). The upper band and lower band are calculated by adding and subtracting the multiple of standard deviation respectively to the average value. Mathematically, these bands can be written as follows: 
 
 
@@ -64,9 +64,9 @@ The RSI indicator is studied in order to identify the oversold or overbought con
 
 ### 3. Fast/Slow Exponential Moving Average (EMA):
 
-###4. Fast/Slow Simple Moving Average (SMA):
+### 4. Fast/Slow Simple Moving Average (SMA):
 
-###5. Moving Average Convergence Divergence (MACD):
+### 5. Moving Average Convergence Divergence (MACD):
 
 ## Charting Setup
 
