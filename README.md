@@ -77,6 +77,10 @@ The charts looks like as follows:
 
 ![stock_chart_BNY](https://github.com/user-attachments/assets/2602b544-ffc0-4582-9fa9-a21f52faa18b)
 
+![macd_TSLA](https://github.com/user-attachments/assets/f97ef130-f6f6-4115-b6e6-2dcfb6902467)
+
+![macd_BNY](https://github.com/user-attachments/assets/dd5af0f4-c8e3-4354-a5cb-df871baf1b6f)
+
 ![sma_TSLA](https://github.com/user-attachments/assets/d8327974-b596-4c3e-a67e-792074a4ab68)
 
 ![sma_BNY](https://github.com/user-attachments/assets/341217f6-5fcf-4b18-a603-b17d0b1178a2)
