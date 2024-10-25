@@ -60,7 +60,7 @@ where
 2. EMAUt : value of EMA of up periods in a moment of time t
 3. EMADt : value of EMA of down periods in a moment of time t
 
-The RSI indicator is studied in order to identify the oversold or overbought conditions of a stock.
+The RSI indicator is studied in order to identify the oversold or overbought conditions of a stock. A period of 14 has been used in this project to calculate the RSI.
 
 ### 4. Fast/Slow Exponential Moving Average (EMA):
 
