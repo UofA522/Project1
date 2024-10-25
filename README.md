@@ -10,7 +10,7 @@
 The goal of the project is as follows:
 1. Write a simple stock monitoring program that takes a stock symbol as input
 2. The output fo the program is a chart showing the daily closing price for the last 6 months
-3. Print the minimum and maximum closing prices for the last 6 months along with respective dates of those closing prices.
+3. Print the minimum and maximum closing prices for the last 6 months along with the respective dates of those closing prices.
 4. Plot the days when volatility in the price was greater than 2% of the closing price.
 5. Also plot one of the financial analysis algorithms like RSI or MACD.
 
