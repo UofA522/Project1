@@ -1,4 +1,4 @@
-# Rust Project 1 for 522 - Stock Market Monitor
+# Rust Project 1 for ECE 522 - Stock Market Monitor
 
 ## Group-4
 - Alton Lavin D'souza (1814026)
@@ -45,11 +45,13 @@ We have implemented the Bollinger Bands Indicators by using the ta crate. For Bo
 
 
 ```
-BollingerBandsMiddle Band = Simple Moving Average (SMA).
-BollingerBandsUpper Band = SMA + SD of observation * multiplier (usually 2.0)
-BollingerBandsLower Band = SMA - SD of observation * multiplier (usually 2.0)
+BollingerBands_Middle Band = Simple Moving Average (SMA).
+BollingerBands_Upper Band = SMA + Standard_Deviation of observation * multiplier
+BollingerBands_Lower Band = SMA - Standard_Deviation of observation * multiplier 
 
 ```
+In this project, the multiplier is taken as 2.
+
 ### 3. Relative Strength Index (RSI)
 We have implemented the Relative Strength Index (RSI) Indicators by using the ta crate. Mathematically RSI can be defined as follows:
 ```
