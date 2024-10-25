@@ -49,24 +49,24 @@ BollingerBandsMiddle Band = Simple Moving Average (SMA).
 BollingerBandsUpper Band = SMA + SD of observation * multiplier (usually 2.0)
 BollingerBandsLower Band = SMA - SD of observation * multiplier (usually 2.0)
 
-Relative Strength Index (RSI): We have implemented the Relative Strength Index (RSI) Indicators by using the ta crate. Mathematically RSI can be defined as follows:
+```
+### 3. Relative Strength Index (RSI)
+We have implemented the Relative Strength Index (RSI) Indicators by using the ta crate. Mathematically RSI can be defined as follows:
+```
 RSIt = EMAUt * 100 / (EMAUt + EMADt)
 ```
-
-
-Symbol Definitions
-
+where 
 1. RSIt : value of RSI indicator in a moment of time t
 2. EMAUt : value of EMA of up periods in a moment of time t
 3. EMADt : value of EMA of down periods in a moment of time t
 
 The RSI indicator is studied in order to identify the oversold or overbought conditions of a stock.
 
-### 3. Fast/Slow Exponential Moving Average (EMA):
+### 4. Fast/Slow Exponential Moving Average (EMA):
 
-### 4. Fast/Slow Simple Moving Average (SMA):
+### 5. Fast/Slow Simple Moving Average (SMA):
 
-### 5. Moving Average Convergence Divergence (MACD):
+### 6. Moving Average Convergence Divergence (MACD):
 
 ## Charting Setup
 
