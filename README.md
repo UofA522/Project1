@@ -175,6 +175,12 @@ The above example works only if you supported ranges and intervals as shown in t
 ## References:
 1. [ta](https://docs.rs/ta/0.5.0/ta/)
 2. [chrono](https://crates.io/crates/chrono)
-3. [yahoo_finance_api](https://crates.io/crates/yahoo_finance_api)
+3. [plotters](https://crates.io/crates/plotters)
+4. [yahoo_finance_api](https://crates.io/crates/yahoo_finance_api)
+5. [clap](https://crates.io/crates/clap)
+6. [tokio](https://crates.io/crates/tokio)
+7. [lazy_static](https://crates.io/crates/lazy_static)
+8. [log](https://crates.io/crates/log)
+9. [log4rs](https://crates.io/crates/log4rs)
 
 
