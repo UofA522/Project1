@@ -66,9 +66,9 @@ The RSI indicator is studied in order to identify the oversold or overbought con
 
 ### 4. Fast/Slow Exponential Moving Average (EMA):
 
-### 5. Fast/Slow Simple Moving Average (SMA):
+### 5. Fast/Slow Simple Moving Average (SMA): 
 
-### 6. Moving Average Convergence Divergence (MACD):
+### 6. Moving Average Convergence Divergence (MACD): We have implemented the MACD Indicators by using the ta crate. For calculating the MACD we have used a slow period of 26, fast period of 12 and a signal period of 9.
 
 ## Charting Setup
 
