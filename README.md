@@ -65,10 +65,13 @@ where
 The RSI indicator is studied in order to identify the oversold or overbought conditions of a stock. A period of 14 has been used in this project to calculate the RSI.
 
 ### 4. Fast/Slow Exponential Moving Average (EMA):
+We have implemented the Fast/Slow SMA Indicators by using the ta crate. And fast period is set to 20 and slow period is set to 50.
 
 ### 5. Fast/Slow Simple Moving Average (SMA): 
+We have implemented the Fast/Slow SMA Indicators by using the ta crate. And fast period is set to 20 and slow period is set to 50.
 
-### 6. Moving Average Convergence Divergence (MACD): We have implemented the MACD Indicators by using the ta crate. For calculating the MACD we have used a slow period of 26, fast period of 12 and a signal period of 9.
+### 6. Moving Average Convergence Divergence (MACD): 
+We have implemented the MACD Indicators by using the ta crate. For calculating the MACD we have used a slow period of 26, fast period of 12 and a signal period of 9.
 
 ## Charting Setup
 
