@@ -49,7 +49,6 @@ fn stock_picture_creator(stock_data: &Vec<(u64, f64, f64, f64, bool)>, ticker_na
         .map(|&(unix_timestamp, _, _, _, _)| DateTime::from_timestamp(unix_timestamp as i64, 0).unwrap())
         .collect();
 
-    // let open_prices: Vec<f64> = stock_data.iter().map(|&(_, close, _, _, _, _)| close).collect();
     let high_prices: Vec<f64> = stock_data.iter().map(|&(_, _, _, high, _)| high).collect();
     let low_prices: Vec<f64> = stock_data.iter().map(|&(_, _, low, _, _)| low).collect();
     let close_prices: Vec<f64> = stock_data.iter().map(|&(_, close, _, _, _)| close).collect();
@@ -245,7 +244,7 @@ fn fetch_min_max_closing_pricing_with_dates(stock_prices: &Vec<(u64, f64, f64, f
     let mut min_date = 0;
     let mut max_date = 0;
     for stock_price in stock_prices{
-        // println!("{:?}",stock_price);
+
         if stock_price.1 < min {
             min = stock_price.1;
             min_date = stock_price.0;
@@ -325,7 +324,6 @@ fn rsi(closing_prices: Vec<f64>, period: usize, ticker_name: &str, times: Vec<Da
     for price in closing_prices {
         let rsi_value = rsi.next(price);
         vector.push(rsi_value);
-        // println!("{:?}", rsi_value);
     }
 
     let rsi_file_name = "rsi".to_owned() + ticker_name + ".png";
